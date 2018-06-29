@@ -1,0 +1,7 @@
+main: me.varmetek.proj.demo.CustomFileConfigurationPlugin
+name: CustomFileConfiguration
+version: 1.4.1
+description: This plugin does so much stuff it can't be contained!
+authors: [Varmetek]
+commands:
+  config:
