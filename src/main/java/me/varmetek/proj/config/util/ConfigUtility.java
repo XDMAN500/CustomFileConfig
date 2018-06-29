@@ -24,6 +24,7 @@
 package me.varmetek.proj.config.util;
 
 import com.google.common.base.Preconditions;
+import org.bukkit.configuration.MemorySection;
 
 import java.util.List;
 import java.util.Set;
@@ -148,6 +149,19 @@ public final class ConfigUtility
         throw new UnsupportedOperationException("Unexpected primitive '" + type.getCanonicalName() + "'");
       }
 
+    }
+  }
+
+  public static void copyConfig(MemorySection from, MemorySection to){
+    Preconditions.checkArgument(from!= null);
+    Preconditions.checkArgument(to!= null);
+    for(String key: to.getKeys(false)){
+      to.set(key,null);
+    }
+
+
+    for(String key: from.getKeys(false)){
+      to.set(key,from.get(key));
     }
   }
 }
