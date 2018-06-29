@@ -51,21 +51,7 @@ public class CustomFileConfigurationPlugin extends JavaPlugin
   public void onEnable() {
     INSTANCE = this;
     new CommandConfig(this);
-
-    Plugin plugin = this;
-    XmlConfiguration config = new XmlConfiguration();
-    File file = new File(plugin.getDataFolder(),"data.yml");
-
-
-      try {
-        config.load(file);
-      } catch (InvalidConfigurationException e) {
-        e.printStackTrace();
-      } catch (FileNotFoundException e) {
-        e.printStackTrace();
-      } catch (IOException e) {
-        e.printStackTrace();
-      }
+    
 
   }
 
