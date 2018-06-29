@@ -23,6 +23,7 @@
 package me.varmetek.proj.demo;
 
 import com.google.common.base.Preconditions;
+import me.varmetek.proj.config.util.ConfigUtility;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.MemorySection;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -112,7 +113,7 @@ public final class ConfigDemoHelper{
     FileConfiguration toConfig = ty.createConfiguration();
     ty.loadConfigurationFile(toConfig);
 
-    copy0(this.config, toConfig);
+    ConfigUtility.copyConfig(this.config, toConfig);
     return toConfig;
 
   }
@@ -129,22 +130,11 @@ public final class ConfigDemoHelper{
      FileConfiguration fromConfig = ty.createConfiguration();
      ty.loadConfigurationFile(fromConfig);
 
-    copy0(fromConfig, this.config);
+    ConfigUtility.copyConfig(fromConfig, this.config);
       return fromConfig;
   }
 
-private  void copy0(MemorySection from, MemorySection to){
-    for(String key: to.getKeys(false)){
-      to.set(key,null);
-    }
 
-
-    for(String key: from.getKeys(false)){
-      to.set(key,from.get(key));
-    }
-
-
-  }
 
 
   public void saveConfig() throws IOException{
